@@ -19,21 +19,14 @@
 
 ## 핵심 기술
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                  End-to-End 비디오 파이프라인                      │
-│                                                                 │
-│   Camera       Vision/AI      Codec          Display            │
-│  ┌───────┐    ┌───────┐    ┌───────┐    ┌───────────┐          │
-│  │  ISP  │───▶│ Vision│───▶│ Codec │───▶│ Display   │          │
-│  │  IP   │    │  IP   │    │  IP   │    │ Driver IP │          │
-│  └───────┘    └───────┘    └───────┘    └───────────┘          │
-│                                                                 │
-│  Bayer RAW     객체 인식      AVC/HEVC     DDI + VDC-M            │
-│  → YUV/RGB     ADAS, AI     VP9/AV1      DSC + 패널             │
-│  HDR, 3DNR                   Enc & Dec    압축 전송               │
-└─────────────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="assets/pipeline-synergy.png" alt="BTree End-to-End 비디오 파이프라인 시너지" width="800" />
+</p>
+
+다이어그램은 두 가지 핵심 시너지 영역을 보여줍니다:
+
+- **캡처 사이드 시너지** — ISP + Vision/AI + Encoder가 공동 설계된 인터페이스를 공유하여, 불필요한 포맷 변환을 제거하고 ISP 출력 특성을 인지하는 인코딩으로 압축 효율을 극대화합니다.
+- **디스플레이 사이드 시너지** — Decoder + Vision/AI + Display가 공동 설계된 인터페이스를 공유하여, 최적화된 후처리와 VDC-M/DSC 통합 압축을 통한 패널 직접 전달이 가능합니다.
 
 ### 1. ISP (Image Signal Processor)
 

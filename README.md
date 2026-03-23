@@ -20,21 +20,14 @@ Unlike vendors that specialize in a single stage, BTree delivers **synergy acros
 
 ## Core Technology
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                   End-to-End Video Pipeline                     │
-│                                                                 │
-│   Camera       Vision/AI      Codec          Display            │
-│  ┌───────┐    ┌───────┐    ┌───────┐    ┌───────────┐          │
-│  │  ISP  │───▶│ Vision│───▶│ Codec │───▶│ Display   │          │
-│  │  IP   │    │  IP   │    │  IP   │    │ Driver IP │          │
-│  └───────┘    └───────┘    └───────┘    └───────────┘          │
-│                                                                 │
-│  Bayer RAW     Object       AVC/HEVC     DDI + VDC-M            │
-│  → YUV/RGB     Detection    VP9/AV1      DSC + Panel            │
-│  HDR, 3DNR     ADAS, AI     Enc & Dec    Compression            │
-└─────────────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="assets/pipeline-synergy.png" alt="BTree End-to-End Video Pipeline Synergy" width="800" />
+</p>
+
+The diagram highlights two key synergy zones:
+
+- **Capture-Side Synergy** — ISP + Vision/AI + Encoder share co-designed interfaces, eliminating redundant format conversions and maximizing compression efficiency with ISP-aware encoding.
+- **Display-Side Synergy** — Decoder + Vision/AI + Display share co-designed interfaces, enabling optimized post-processing and direct-to-panel delivery with integrated VDC-M/DSC compression.
 
 ### 1. ISP (Image Signal Processor)
 
