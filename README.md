@@ -30,9 +30,9 @@ Unlike vendors that specialize in a single stage, BTree delivers **synergy acros
 │  │  IP   │    │  IP   │    │  IP   │    │ Driver IP │          │
 │  └───────┘    └───────┘    └───────┘    └───────────┘          │
 │                                                                 │
-│  Bayer RAW     Object       Encode/      DDI + Panel            │
-│  → YUV/RGB     Detection    Decode       Compression            │
-│  HDR, 3DNR     ADAS, AI     VDC-M        VESA DSC              │
+│  Bayer RAW     Object       AVC/HEVC     DDI + VDC-M            │
+│  → YUV/RGB     Detection    VP9/AV1      DSC + Panel            │
+│  HDR, 3DNR     ADAS, AI     Enc & Dec    Compression            │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -61,21 +61,21 @@ By co-designing vision algorithms alongside our ISP, we ensure **zero-loss hando
 
 ### 3. Video Codec
 
-Efficient compression is essential for transmitting and storing the high-resolution streams our ISP produces. BTree's codec IP portfolio includes:
+Efficient compression is essential for transmitting and storing the high-resolution streams our ISP produces. BTree's codec IP portfolio covers major industry standards:
 
-- **VDC-M 1.2 Encoder** — VESA Display Compression-M compliant, visually lossless up to **5:1 compression ratio (6 bpp)**
-- **VDC-M 1.2 Decoder** — Matching decoder for end-to-end pipeline integrity
-- **Custom Compression** — Application-specific codec tuning for bandwidth-constrained environments
+- **AVC/HEVC Combo Encoder** — H.264 + H.265 unified encoder IP (in development)
+- **AVC/HEVC/VP9/AV1 Combo Decoder** — Multi-standard decoder supporting all major codecs (in development)
 
-Our codec IP is designed to operate in lockstep with the upstream ISP and downstream display stages, minimizing latency while preserving visual fidelity.
+Our codec IP is co-designed with the upstream ISP and downstream display stages, minimizing latency while preserving visual fidelity across the full encode-decode chain.
 
 ### 4. Display (DDI)
 
 The final stage — BTree's **Display Driver IC (DDI) IP** delivers processed frames to panels with precision:
 
 - Display Driver Interface IP optimized for mobile and automotive panels
-- Integrated **VESA display compression** support for bandwidth reduction on display links
-- Co-optimized with our codec stage to avoid decode-then-re-encode overhead
+- **VDC-M 1.2 Encoder/Decoder** — VESA Display Compression-M compliant, visually lossless up to **5:1 compression ratio (6 bpp)**
+- **VESA DSC (Display Stream Compression)** — Standard panel-link compression for bandwidth reduction
+- Co-optimized with our codec stage to minimize end-to-end latency
 
 ## The Pipeline Synergy Advantage
 
@@ -85,7 +85,7 @@ Most IP vendors offer point solutions. BTree's differentiation lies in **cross-s
 |---|---|---|
 | ISP-to-Vision handoff | Format conversion overhead | Native format passthrough, co-designed interfaces |
 | Compression artifacts | Generic codec tuned for natural images | Codec aware of ISP output characteristics |
-| Display bandwidth | Separate compression at display link | Unified compression strategy from capture to panel |
+| Display bandwidth | Separate compression at display link | VDC-M/DSC integrated into DDI, unified compression strategy |
 | Multi-camera systems | Independent per-camera processing | Shared ISP + Vision pipeline with multi-instance support |
 | Total silicon area | Sum of individual IP blocks | Shared buffers, unified control, reduced gate count |
 
