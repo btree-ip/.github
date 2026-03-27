@@ -1,7 +1,7 @@
 ## Hi there 👋
 
 <p align="center">
-  <h1 align="center">BTree Inc. (비트리)</h1>
+  <h1 align="center">BTree Co., Ltd. (비트리)</h1>
   <p align="center">
     <strong>End-to-End Video Pipeline IP — From Pixel to Display</strong>
   </p>
